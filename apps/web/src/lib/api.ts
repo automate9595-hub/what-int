@@ -16,7 +16,9 @@ export interface Plan {
   id: string; code: string; name: string; priceCents: number; currency: string; limits: Record<string, number>; isActive: boolean;
 }
 export interface TenantInfo {
-  id: string; name: string; slug: string; status: string;
+  id: string; name: string; slug: string; status: string; timezone: string;
+  contactPhone: string | null; address: string | null; city: string | null; province: string | null; country: string | null;
+  numbers: NumberRow[];
   subscription: { status: string; currentPeriodEnd: string; plan: { code: string; name: string; limits: Record<string, number> } } | null;
   usage: { users: number };
 }
@@ -24,6 +26,16 @@ export interface UserRow { id: string; email: string; name: string; role: Role; 
 export interface AuditRow {
   id: string; action: string; entity: string | null; entityId: string | null;
   tenantId: string | null; userId: string | null; ip: string | null; createdAt: string;
+}
+
+export interface NumberRow {
+  id: string; phone: string; label: string | null; mode: 'OWN' | 'PLATFORM'; status: 'PENDING' | 'CONNECTED' | 'DISCONNECTED';
+}
+export interface TenantDetail {
+  id: string; name: string; slug: string; status: 'ACTIVE' | 'SUSPENDED'; timezone: string; createdAt: string;
+  contactPhone: string | null; address: string | null; city: string | null; province: string | null; country: string | null;
+  subscription: { id: string; status: string; currentPeriodEnd: string; plan: { id: string; code: string; name: string } } | null;
+  users: UserRow[]; numbers: NumberRow[];
 }
 
 export class ApiError extends Error {

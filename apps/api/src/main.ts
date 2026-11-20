@@ -9,7 +9,7 @@ async function bootstrap() {
   const secret = process.env.JWT_SECRET ?? '';
   if (secret.length < 32) throw new Error('JWT_SECRET debe tener al menos 32 caracteres');
 
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { rawBody: true });
   app.use(helmet());
   app.enableCors({ origin: (process.env.CORS_ORIGINS ?? '').split(',').filter(Boolean), credentials: true });
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true, transform: true }));

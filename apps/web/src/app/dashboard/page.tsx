@@ -3,6 +3,7 @@ import { FormEvent, useCallback, useEffect, useState } from 'react';
 import Shell from '@/components/Shell';
 import { api, errMsg, Role, TenantInfo, UserRow } from '@/lib/api';
 import { useAuth } from '@/lib/useAuth';
+import BusinessProfile from '@/components/BusinessProfile';
 
 const fmt = (d: string) => new Date(d).toLocaleDateString('es-AR');
 const SUB: Record<string, string> = { TRIALING: 'En prueba', ACTIVE: 'Activa', PAST_DUE: 'Pago vencido', SUSPENDED: 'Suspendida', CANCELED: 'Cancelada' };
@@ -60,6 +61,8 @@ export default function Dashboard() {
           </div>
         </div>
       )}
+
+      {info && <BusinessProfile info={info} isAdmin={isAdmin} onSaved={() => { setOk('Datos guardados'); void load(); }} />}
 
       {isAdmin && (
         <>

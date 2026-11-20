@@ -21,7 +21,7 @@ export class TenantController {
 
   @Roles(UserRole.TENANT_ADMIN)
   @Patch('me')
-  rename(@CurrentUser() user: AuthUser, @Body() dto: UpdateMyTenantDto) {
-    return this.tenant.rename(user, dto.name);
+  update(@CurrentUser() user: AuthUser, @Body() dto: UpdateMyTenantDto) {
+    return this.tenant.update(user, dto);
   }
 }
