@@ -25,7 +25,9 @@ CI en verde, API desplegada en Render con base en Neon, registro y login probado
 | /tenant/me: datos, plan y uso | Escrito, **no probado** |
 | Pruebas unitarias de UsersService (4) | Escritas, **no ejecutadas** |
 | Limitación conocida: una empresa suspendida puede usar su token de acceso hasta 15 min (no se puede renovar) | Documentada |
-| Web (panel de superadmin y de empresa) | **Pendiente** (Etapa 2, parte 2) |
+| Web: login, registro, panel de empresa, panel de superadmin (apps/web) | Escrita, **no compilada ni probada** |
+| Web: estilos propios (CSS) en lugar de Tailwind; sesión guardada en localStorage (a migrar a cookies httpOnly) | Decisión provisoria |
+| Web: Dashboard con gráficos, calendario, conversaciones, agentes | **Pendiente** (etapas siguientes) |
 
 ## Entrega por GitHub
 | Elemento | Estado |

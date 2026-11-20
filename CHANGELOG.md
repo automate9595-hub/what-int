@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1 (Etapa 2, parte 2: web)
+- apps/web: login, registro, panel de empresa (datos, plan, usuarios) y panel de superadmin (empresas, planes, auditoría), modo claro/oscuro
+- render.yaml: sitio estático aiba-web; CI compila también la web
+
 ## 0.2.0 (Etapa 2, parte 1: servidor)
 - Panel de superadmin: empresas, suspensión/reactivación (revoca sesiones), planes, auditoría
 - Gestión de usuarios por empresa con aislamiento por tenantId y límite según plan

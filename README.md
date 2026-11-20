@@ -15,6 +15,10 @@ Plataforma SaaS multiempresa de agentes de IA para WhatsApp. Este repositorio co
 
 Nota: el plan gratuito de Render duerme el servicio tras 15 minutos sin uso y tarda unos segundos en despertar. El arranque usa `prisma db push` (crea las tablas sin migraciones); antes de tener clientes reales lo cambiamos por migraciones versionadas.
 
+## Web (apps/web)
+Next.js exportado como sitio estático (`output: 'export'`), servido gratis por Render como `aiba-web`. Páginas: `/login/`, `/register/`, `/dashboard/` (empresa) y `/admin/` (superadmin). Usa la API definida en `NEXT_PUBLIC_API_URL`.
+Después del primer despliegue, en el servicio `aiba-api` de Render poné `CORS_ORIGINS` con la dirección de la web (sin barra final), por ejemplo `https://aiba-web.onrender.com`.
+
 ## Puesta en marcha local (opcional)
 ```bash
 cp .env.example .env        # editá JWT_SECRET (mínimo 32 caracteres) y la clave del superadmin

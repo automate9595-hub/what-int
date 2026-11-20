@@ -19,3 +19,13 @@ services:
         sync: false
       - key: SUPERADMIN_PASSWORD
         sync: false
+  - type: web
+    name: aiba-web
+    runtime: static
+    buildCommand: npm install && npm run build -w apps/web
+    staticPublishPath: ./apps/web/out
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: NEXT_PUBLIC_API_URL
+        value: https://aiba-api.onrender.com
