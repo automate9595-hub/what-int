@@ -14,6 +14,19 @@
 
 El código se escribió en un entorno sin acceso a internet: no se pudieron instalar dependencias, compilar ni ejecutar pruebas. Hasta correr los pasos del README y confirmar que compila y las pruebas pasan, la etapa **no se considera terminada**.
 
+## Etapa 1 verificada por el usuario
+CI en verde, API desplegada en Render con base en Neon, registro y login probados en `/docs`.
+
+## Etapa 2, parte 1: servidor (nueva)
+| Elemento | Estado |
+|---|---|
+| /admin: empresas, suspender/reactivar, planes, auditoría (solo SUPER_ADMIN) | Escrito, **no probado** |
+| /users: listar, crear, editar, desactivar, con límite de plan | Escrito, **no probado** |
+| /tenant/me: datos, plan y uso | Escrito, **no probado** |
+| Pruebas unitarias de UsersService (4) | Escritas, **no ejecutadas** |
+| Limitación conocida: una empresa suspendida puede usar su token de acceso hasta 15 min (no se puede renovar) | Documentada |
+| Web (panel de superadmin y de empresa) | **Pendiente** (Etapa 2, parte 2) |
+
 ## Entrega por GitHub
 | Elemento | Estado |
 |---|---|

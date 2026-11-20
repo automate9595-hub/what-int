@@ -36,6 +36,14 @@ npm test
 | POST | /auth/logout | Revoca la sesión |
 | GET | /auth/me | Perfil del usuario autenticado |
 | GET | /health | Estado de la API y la base de datos |
+| GET | /tenant/me | Datos, plan y uso de mi empresa (admin y operador) |
+| PATCH | /tenant/me | Cambiar el nombre de mi empresa (admin) |
+| GET, POST | /users | Listar y crear usuarios de mi empresa (admin) |
+| PATCH | /users/:id | Editar, cambiar rol o desactivar usuario (admin) |
+| GET | /admin/tenants, /admin/tenants/:id | Empresas (solo superadmin) |
+| PATCH | /admin/tenants/:id/status | Suspender o reactivar empresa (superadmin) |
+| GET, PATCH | /admin/plans, /admin/plans/:id | Planes y límites (superadmin) |
+| GET | /admin/audit-logs | Registro de auditoría (superadmin) |
 
 ## Despliegue gratuito (referencia)
 - PostgreSQL: Neon o Supabase (plan gratis) → `DATABASE_URL`
