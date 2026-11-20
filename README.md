@@ -16,7 +16,7 @@ Plataforma SaaS multiempresa de agentes de IA para WhatsApp. Este repositorio co
 Nota: el plan gratuito de Render duerme el servicio tras 15 minutos sin uso y tarda unos segundos en despertar. El arranque usa `prisma db push` (crea las tablas sin migraciones); antes de tener clientes reales lo cambiamos por migraciones versionadas.
 
 ## Web (apps/web)
-Next.js exportado como sitio estático (`output: 'export'`), servido gratis por Render como `aiba-web`. Páginas: `/login/`, `/register/`, `/dashboard/` (empresa) y `/admin/` (superadmin). Usa la API definida en `NEXT_PUBLIC_API_URL`.
+Next.js exportado como sitio estático (`output: 'export'`), servido gratis por Render como `aiba-web`. Páginas: `/login/`, `/register/`, `/admin/` (superadmin) y, para cada empresa: `/dashboard/`, `/mensajes/`, `/agenda/`, `/clientes/`, `/servicios/`, `/horarios/`, `/agentes/`. Usa la API definida en `NEXT_PUBLIC_API_URL`.
 Después del primer despliegue, en el servicio `aiba-api` de Render poné `CORS_ORIGINS` con la dirección de la web (sin barra final), por ejemplo `https://aiba-web.onrender.com`.
 
 ## Puesta en marcha local (opcional)
@@ -48,6 +48,21 @@ npm test
 | PATCH | /admin/tenants/:id/status | Suspender o reactivar empresa (superadmin) |
 | GET, PATCH | /admin/plans, /admin/plans/:id | Planes y límites (superadmin) |
 | GET | /admin/audit-logs | Registro de auditoría (superadmin) |
+| GET, POST, PATCH | /services | Servicios de la empresa (crear y editar: admin) |
+| GET, POST, PATCH | /contacts | Clientes (búsqueda con `?q=`) |
+| GET, PUT | /schedule/hours | Horarios de atención (editar: admin) |
+| GET, POST, DELETE | /schedule/blocks | Bloqueos de agenda |
+| GET | /schedule/availability?date=AAAA-MM-DD&serviceId= | Horarios libres |
+| GET, POST, PATCH | /appointments | Reservas: listar por fechas, crear, reprogramar, cancelar |
+| POST | /admin/tenants | Crear empresa completa: plan, administrador, contacto y números (superadmin) |
+| PATCH | /admin/tenants/:id, /admin/tenants/:id/subscription | Editar datos, plan y suscripción (superadmin) |
+| POST, DELETE | /admin/tenants/:id/numbers, /admin/numbers/:id | Asignar y quitar números de WhatsApp (superadmin) |
+| POST | /admin/users/:id/password | Cambiar la contraseña de un usuario de una empresa (superadmin) |
+| POST | /admin/numbers/:id/connect, /admin/numbers/:id/disconnect | Conectar (verificando con Meta) o desconectar un número (superadmin) |
+| GET, POST | /webhooks/whatsapp | Webhook de Meta (verificación y mensajes firmados) |
+| GET, PATCH | /conversations, /conversations/:id | Bandeja de mensajes: listar, ver, pausar IA, asignar, cerrar |
+| POST | /conversations/:id/messages | Responder a un cliente por WhatsApp |
+| GET, POST, PATCH | /agents | Agentes de IA (configuración; el motor llega en la Etapa 5) |
 
 ## Despliegue gratuito (referencia)
 - PostgreSQL: Neon o Supabase (plan gratis) → `DATABASE_URL`

@@ -29,6 +29,30 @@ CI en verde, API desplegada en Render con base en Neon, registro y login probado
 | Web: estilos propios (CSS) en lugar de Tailwind; sesión guardada en localStorage (a migrar a cookies httpOnly) | Decisión provisoria |
 | Web: Dashboard con gráficos, calendario, conversaciones, agentes | **Pendiente** (etapas siguientes) |
 
+## Etapa 3, parte 1: servidor (nueva)
+| Elemento | Estado |
+|---|---|
+| Servicios, clientes, horarios, bloqueos, disponibilidad | Escrito, **no probado** |
+| Reservas con validación de horario, bloqueos, pasado y choques, y candado por empresa | Escrito, **no probado contra la base real** |
+| Agentes (solo configuración, límite por plan) | Escrito, **no probado** |
+| Pruebas unitarias nuevas (fechas y reservas: 10) | Escritas, **no ejecutadas** |
+| Las tablas nuevas se crean al redesplegar (prisma db push) | Pendiente de verificar |
+| Superadmin: crear empresa (plan, administrador, contacto, números), editar, plan y suscripción, números, contraseñas | Escrito, **no probado** |
+| Números de WhatsApp: solo registro y asignación (estado “Pendiente de conexión”); sin conexión real con Meta | Pendiente (Etapa 4) |
+| Web de empresa: Agenda, Clientes, Servicios, Horarios, Agentes | Escrita, **no compilada ni probada** |
+| Agenda web: sin reprogramar reservas todavía (el servidor sí lo permite); sin vista semanal/mensual | Pendiente |
+| Limitaciones: sin feriados, sin descansos, una sola agenda por empresa (sin profesionales) | Pendiente |
+
+## Etapa 4: WhatsApp oficial (nueva)
+| Elemento | Estado |
+|---|---|
+| Webhook (verificación, firma, mensajes, estados) y envío de texto | Escrito, **no probado contra Meta** |
+| Conexión de números con verificación y token cifrado | Escrito, **pendiente de credenciales de Meta** |
+| Bandeja de mensajes (API y web) | Escrita, **no probada** |
+| Pruebas unitarias nuevas (webhook, envío, cifrado: 14) | Escritas, **no ejecutadas** |
+| Embedded Signup, plantillas, multimedia, cola de procesamiento (Redis/BullMQ) | **Pendiente** |
+| Requiere credenciales: META_APP_SECRET, token permanente, Phone Number ID, WABA ID | Pendiente del usuario (ver docs/WHATSAPP.md) |
+
 ## Entrega por GitHub
 | Elemento | Estado |
 |---|---|
